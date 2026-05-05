@@ -5,7 +5,8 @@ FROM node:24-alpine
 RUN apk add --no-cache curl git fd ripgrep
 
 # Install the Pi coding agent
-RUN npm install -g @mariozechner/pi-coding-agent
+ARG PI_VERSION="latest"
+RUN npm install -g @mariozechner/pi-coding-agent@${PI_VERSION}
 
 RUN su - node
 RUN mkdir -p /home/node/.pi/agent
