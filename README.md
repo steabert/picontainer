@@ -8,7 +8,7 @@ A containerized setup for the [Pi Coding Agent](https://pi.dev) by Mario Zechner
 
 ## Features
 
-- Sandbox with access to ~/.pi and app ($PWD) directory
+- Sandbox with access to ~/.pi/agent and app ($PWD) directory
 - Easy local installation
 
 ## Prerequisites
@@ -34,15 +34,16 @@ picon
 This will:
 - Run the container with your current directory mounted as `/home/node/app`
   inside the container
-- Mount your `~/.pi` directory to `/home/node/.pi` for persistent configuration
+- Mount your `~/.pi/agent` directory to `/home/node/.pi/agent` for persistent configuration
 - Start the Pi Coding Agent
+- Archive the settings on exit (in case they were modified)
 
 NOTE: make sure `~/.local/bin` is in your path (should already be the case).
 
 ## Configuration
 
 The container mounts two volumes:
-- `~/.pi` - For Pi Coding Agent configuration and cache
+- `~/.pi/agent` - For Pi Coding Agent configuration and cache
 - Current directory - As the working directory for your projects
 
 ## License
