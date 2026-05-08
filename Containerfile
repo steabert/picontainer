@@ -6,13 +6,13 @@ RUN apk add --no-cache curl git fd ripgrep
 
 # Install the Pi coding agent
 ARG PI_VERSION="latest"
-RUN npm install -g @mariozechner/pi-coding-agent@${PI_VERSION}
+RUN npm install -g @earendil-works/pi-coding-agent@${PI_VERSION}
 
-RUN su - node
-RUN mkdir -p /home/node/.pi/agent
-RUN mkdir -p /home/node/app
+# Disable update checks and telemetry
+ENV PI_OFFLINE=1
 
-WORKDIR /home/node/app
+# Switch to non-root user
+USER node
 
 # Set the default command to run the coding agent
 ENTRYPOINT ["/usr/local/bin/pi"]
